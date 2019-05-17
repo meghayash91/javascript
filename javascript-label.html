@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Javascript LAbel example</title>
+        <style>
+            p{
+                font-family: Arial, Helvetica, sans-serif;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                text-align: center;
+                border: 2px solid rgba(0,0,200,0.6);
+                background: rgba(0,0,200,0.3);
+            }
+        </style>
+    </head>
+    <body>
+        <p>Developer name</p>
+        <script>
+            const para=document.querySelector('p');
+            para.addEventListener('click',updateName);
+
+            function updateName(){
+                let name=prompt('Enter a new name');
+                para.textContent='Developer Name:'+name;
+            }
+        </script>
+    </body>
+</html>

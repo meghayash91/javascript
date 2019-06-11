@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Guess the Number</title>
+    <style>
+        body {
+            width: 500px;
+            margin-left: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Number Game</h1>
+    <p>Guess the number between 0 to 100. You have only 10 chances. All the best!</p>
+    <label>Enter the number:</label>
+    <input type="text" id="sdk" name="sdk">
+    <button id="button">Submit Guess </button><br>
+    <label id="sh"></label><br><br>
+    <label id="hint"></label>
+    <script type="text/javascript">
+        num = 100;
+        var t1 = document.getElementById("sdk");
+        var b1 = document.querySelector('button');
+        var array = [];
+        var number = Math.floor(Math.random() * num + 2);
+        var counter = 0;
+        function reset() {
+            document.getElementById("sdk").disabled = true
+            document.getElementById("button").disabled = true
+        }
+        b1.onclick = function () {
+            if (t1.value != NaN) {
+                if (counter <= 9) {
+                    if (t1.value < number) {
+                        document.getElementById("hint").innerHTML = "Swalpa jasthi"
+                        array.push(t1.value)
+                    }
+                    else if (t1.value > number) {
+                        document.getElementById("hint").innerHTML = "Swalpa kammii"
+                        array.push(t1.value)
+                    }
+                    else if (t1.value == number) {
+                        document.getElementById("hint").innerHTML = "You won"
+                        reset();
+                        var b2=document.createElement("button")
+                        b2.innerHTML="Start a new game"
+                        var ad=document.getElementsByTagName("body")[0]
+                        ad.appendChild(b2)
+                    }
+                    else {
+                        document.getElementById("hint").innerHTML = "Enter numbers only"
+                    }
+                    
+                    document.getElementById("sh").innerHTML = "Your Previous Guess: " + array;
+                    document.getElementById("sdk").value = ""
+
+                }
+
+            }
+            else {
+                reset();
+            }
+            counter++;
+        }
+    </script>
+</body>
+
+</html>
